@@ -3,7 +3,7 @@ import { useState } from "react";
 function Carousel({className = "", images}) {
   const [currentImg, setImg] = useState(0);
 
-  const leftImage = () => {
+  const handleLeft = () => {
     setImg((currentIndex) => {
         if (currentIndex === 0) {
             return images.length - 1;
@@ -13,7 +13,7 @@ function Carousel({className = "", images}) {
     })
   };
 
-  const rightImage = () => {
+  const handleRight = () => {
     setImg((currentIndex) => {
       if (currentIndex === images.length - 1) {
         return 0;
@@ -26,11 +26,11 @@ function Carousel({className = "", images}) {
 
   return (
     <div className={className}>
-      <button onClick={leftImage}>
+      <button onClick={handleLeft}>
         Left
       </button>
       <img src={images[currentImg]} />
-      <button onClick={rightImage}>
+      <button onClick={handleRight}>
         Right
       </button>
     </div>
